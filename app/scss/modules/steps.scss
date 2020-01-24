@@ -1,0 +1,52 @@
+.block-steps {
+  background-image: url("/img/bg-two.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 50px;
+}
+
+.block-steps-number {
+  display: inline-block;
+  background: $secondary;
+  color: #fff;
+  text-align: center;
+  font-size: $h1-font-size;
+  font-family: $font-heading;
+  border-radius: 50%;
+  border: 11px solid #fff;
+  padding: 30px;
+  width: 50px;
+  height: 50px;
+}
+
+.block-steps-item {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+}
+
+.block-steps-number::after {
+  content: "";
+  border-radius: 50px;
+  background-color: #fff;
+  top: 25%;
+  height: 20px;
+  width: 20px;
+  left: 100%;
+  bottom: 0;
+  position: absolute;
+}
+
+.block-steps-desc {
+  margin-top: 10px;
+  color: #fff;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.block-steps-caption {
+  color: #fff;
+  margin-top: 8px;
+}

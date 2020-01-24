@@ -1,0 +1,20 @@
+{
+  "name": "skin care",
+  "description": "",
+  "main": "gulpfile.js",
+  "authors": [
+    "alex <kail.dead.kd@gmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/tashenoff/gulp3njk",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "normalize-scss": "normalize.scss#^7.0.1"
+  }
+}

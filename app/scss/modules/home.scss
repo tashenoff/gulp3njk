@@ -1,0 +1,35 @@
+.header-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  max-width: 1140px;
+  margin: 0 auto;
+  justify-content: center;
+  height: 100%;
+  color: #fff;
+
+  @media screen and (max-width: 600px) {
+    padding: 1rem;
+    ul {
+      margin: 0em 0;
+    }
+  }
+}
+
+.header-banner {
+  background-image: url("/img/Rectangle_81.png");
+  height: 70vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  @media screen and (max-width: 600px) {
+    height: 100vh;
+    ul {
+      margin: 2em 0;
+    }
+  }
+}
+
+img {
+  width: 100%;
+}

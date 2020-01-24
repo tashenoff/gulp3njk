@@ -8,13 +8,16 @@
   <link rel="stylesheet" href="css/main.min.css">
 </head>
 <body>
-  {% include "partials/header.njk" %}
+  {% include "partials/home.njk" %}
 
+ {% include "partials/mainitem.njk" %}
+  {% include "partials/steps.njk" %}
 
   <article class="content">
     {% block content %}
     {% endblock %}
   </article>  
+
 
   {% include "partials/footer.njk" %}
   <script src="assets/js/main.js"></script>
