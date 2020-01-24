@@ -4,7 +4,12 @@ var browserSync = require("browser-sync").create();
 var nunjucksRender = require("gulp-nunjucks-render");
 var data = require("gulp-data");
 var sass = require("gulp-sass");
+
 var rename = require("gulp-rename");
+var cssnano = require("gulp-cssnano"); // Подключаем пакет для минификации CSS
+var imagemin = require("gulp-imagemin"); // Подключаем библиотеку для работы с изображениями
+var pngquant = require("imagemin-pngquant"); // Подключаем библиотеку для работы с png
+var cache = require("gulp-cache"); // Подключаем библиотеку кеширования
 var cleanCSS = require("gulp-clean-css");
 sass.compiler = require("node-sass");
 
@@ -38,7 +43,7 @@ gulp.task("nunjucksRender", function() {
 // Compile sass into CSS & auto-inject into browsers
 gulp.task("style", function() {
   return gulp
-    .src("./app/assets/scss/main.scss")
+    .src("./app/scss/main.scss")
     .pipe(sass().on("error", sass.logError))
     .pipe(
       autoprefixer({
@@ -46,30 +51,58 @@ gulp.task("style", function() {
         cascade: false
       })
     )
-    .pipe(gulp.dest("./app/assets/css/"))
+    .pipe(
+      rename({
+        suffix: ".min"
+      })
+    )
+    .pipe(cssnano())
+    .pipe(cleanCSS({ compatibility: "ie8" }))
+
+    .pipe(gulp.dest("./app/css/"))
     .pipe(browserSync.stream());
 });
 
-gulp.task("minify-css", () => {
-  return (
-    gulp
-      .src("./app/assets/css/main.css")
-      .pipe(cleanCSS({ compatibility: "ie8" }))
+gulp.task("prebuild", async function() {
+  var buildHtml = gulp
+    .src("./app/*.html") // Переносим HTML в продакшен
+    .pipe(gulp.dest("./app/dest/"));
 
-      //rename css to min
-      .pipe(
-        rename({
-          suffix: ".min"
+  var buildCss = gulp
+    .src([
+      // Переносим библиотеки в продакшен
+
+      "./app/css/*.min.css"
+    ])
+    .pipe(gulp.dest("./app/dest/css/"));
+});
+
+gulp.task("clear", function(callback) {
+  return cache.clearAll();
+});
+
+gulp.task("img", function() {
+  return gulp
+    .src("./app/img/**/*") // Берем все изображения из app
+    .pipe(
+      cache(
+        imagemin({
+          // С кешированием
+          // .pipe(imagemin({ // Сжимаем изображения без кеширования
+          interlaced: true,
+          progressive: true,
+          svgoPlugins: [{ removeViewBox: false }],
+          use: [pngquant()]
         })
-      )
-      .pipe(gulp.dest("./app/dest/css/"))
-  );
+      ) /**/
+    )
+    .pipe(gulp.dest("./app/dest/img")); // Выгружаем на продакшен
 });
 
 // Static Server
 gulp.task("watch", ["browser-sync"], function() {
   //слушаем sass
-  gulp.watch("./app/assets/scss/**/*.scss", ["style"]);
+  gulp.watch("./app/scss/**/*.scss", ["style"]);
 
   //слушаем nunjucks
   gulp
@@ -82,4 +115,4 @@ gulp.task("watch", ["browser-sync"], function() {
 
 gulp.task("default", ["watch"]);
 
-gulp.task("build", ["minify-css"]);
+gulp.task("build", ["prebuild", "clear", "img"]);
