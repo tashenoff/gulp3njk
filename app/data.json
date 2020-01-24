@@ -1,0 +1,16 @@
+{
+  "animals": [
+    {
+      "type": "dog",
+      "sound": "гав"
+    },
+    {
+      "type": "cat",
+      "sound": "маыаывяу"
+    },
+    {
+      "type": "му",
+      "sound": "moo"
+    }
+  ]
+}

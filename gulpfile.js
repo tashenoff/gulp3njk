@@ -2,7 +2,10 @@ var gulp = require("gulp");
 var autoprefixer = require("gulp-autoprefixer");
 var browserSync = require("browser-sync").create();
 var nunjucksRender = require("gulp-nunjucks-render");
+var data = require("gulp-data");
 var sass = require("gulp-sass");
+var rename = require("gulp-rename");
+var cleanCSS = require("gulp-clean-css");
 sass.compiler = require("node-sass");
 
 // Loads BrowserSync
@@ -18,6 +21,11 @@ gulp.task("browser-sync", function() {
 gulp.task("nunjucksRender", function() {
   return gulp
     .src("./app/pages/**/*.+(html|njk)")
+    .pipe(
+      data(() => {
+        return require("./app/data.json");
+      })
+    )
     .pipe(
       nunjucksRender({
         path: ["./app/templates/"] // String or Array
@@ -42,6 +50,22 @@ gulp.task("style", function() {
     .pipe(browserSync.stream());
 });
 
+gulp.task("minify-css", () => {
+  return (
+    gulp
+      .src("./app/assets/css/main.css")
+      .pipe(cleanCSS({ compatibility: "ie8" }))
+
+      //rename css to min
+      .pipe(
+        rename({
+          suffix: ".min"
+        })
+      )
+      .pipe(gulp.dest("./app/dest/css/"))
+  );
+});
+
 // Static Server
 gulp.task("watch", ["browser-sync"], function() {
   //слушаем sass
@@ -57,3 +81,5 @@ gulp.task("watch", ["browser-sync"], function() {
 });
 
 gulp.task("default", ["watch"]);
+
+gulp.task("build", ["minify-css"]);

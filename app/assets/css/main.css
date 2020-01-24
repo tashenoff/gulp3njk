@@ -21,9 +21,3 @@
   letter-spacing: 0.9px;
   font-style: normal;
   font-weight: bold; }
-
-body {
-  color: red;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex; }
