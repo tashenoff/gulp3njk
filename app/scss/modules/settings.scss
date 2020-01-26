@@ -31,7 +31,7 @@ $base-unit: "em";
 $base-font-family: null !default;
 
 // The font sizes for h1-h6.
-$h1-font-size: 2 * $base-font-size;
+$h1-font-size: 3 * $base-font-size;
 $h2-font-size: 1.5 * $base-font-size !default;
 $h3-font-size: 1.17 * $base-font-size !default;
 $h4-font-size: 1 * $base-font-size !default;
@@ -39,7 +39,7 @@ $h5-font-size: 0.83 * $base-font-size !default;
 $h6-font-size: 0.67 * $base-font-size !default;
 
 // The amount lists and blockquotes are indented.
-$indent-amount: 20px;
+$indent-amount: 50px;
 
 // The following variable controls whether normalize-scss will output
 // font-sizes, line-heights and block-level top/bottom margins that form a basic

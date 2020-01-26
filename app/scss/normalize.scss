@@ -1,0 +1,9 @@
+//normalize решил отдельно добавлять в header можно было бы конечно из main.scss компилировать но где то слышал что best practices это такие штуки отдельно добавлять
+
+@import "./app/bower/normalize-scss/sass/_normalize";
+@include normalize();
+
+ul {
+  @include normalize-margin(1 0 2 0);
+  font-size: $base-font-size * 1.3;
+}

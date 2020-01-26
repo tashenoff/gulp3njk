@@ -2,15 +2,16 @@ var gulp = require("gulp");
 var autoprefixer = require("gulp-autoprefixer");
 var browserSync = require("browser-sync").create();
 var nunjucksRender = require("gulp-nunjucks-render");
-var data = require("gulp-data");
-var sass = require("gulp-sass");
-
-var rename = require("gulp-rename");
+var data = require("gulp-data"); //берем данные из json data и вставляем в ninjucks
+var sass = require("gulp-sass"); //sass
+var wiredep = require("gulp-wiredep"); //пока не понял как сделать так что бы компонеты (стили и js) автоматом ставились в header
+var del = require("del"); // Подключаем библиотеку для удаления файлов и папок
+var rename = require("gulp-rename"); //rename
 var cssnano = require("gulp-cssnano"); // Подключаем пакет для минификации CSS
 var imagemin = require("gulp-imagemin"); // Подключаем библиотеку для работы с изображениями
 var pngquant = require("imagemin-pngquant"); // Подключаем библиотеку для работы с png
 var cache = require("gulp-cache"); // Подключаем библиотеку кеширования
-var cleanCSS = require("gulp-clean-css");
+var cleanCSS = require("gulp-clean-css"); //пока изучаю
 sass.compiler = require("node-sass");
 
 // Loads BrowserSync
@@ -40,10 +41,33 @@ gulp.task("nunjucksRender", function() {
     .pipe(browserSync.stream());
 });
 
+gulp.task("bower", function() {
+  gulp
+    .src("./app/templates/layout.njk")
+    // .pipe(
+    //   wiredep({
+    //     directory: "./app/bower/"
+    //   })
+    // )
+    .pipe(gulp.dest("./app"));
+});
+
+gulp.task("min", function() {
+  return gulp
+    .src("./app/css/*.css")
+    .pipe(cssnano())
+    .pipe(rename({ suffix: ".min" })) // Добавляем суффикс .min
+    .pipe(gulp.dest("./app/css"));
+});
+
+gulp.task("del", async function() {
+  return del.sync("./app/css/*");
+});
+
 // Compile sass into CSS & auto-inject into browsers
 gulp.task("style", function() {
   return gulp
-    .src("./app/scss/main.scss")
+    .src("./app/scss/*.scss")
     .pipe(sass().on("error", sass.logError))
     .pipe(
       autoprefixer({
@@ -51,15 +75,10 @@ gulp.task("style", function() {
         cascade: false
       })
     )
-    .pipe(
-      rename({
-        suffix: ".min"
-      })
-    )
     .pipe(cssnano())
-    .pipe(cleanCSS({ compatibility: "ie8" }))
-
+    .pipe(rename({ suffix: ".min" })) // Добавляем суффикс .min
     .pipe(gulp.dest("./app/css/"))
+
     .pipe(browserSync.stream());
 });
 
@@ -70,7 +89,7 @@ gulp.task("prebuild", async function() {
 
   var buildCss = gulp
     .src([
-      // Переносим библиотеки в продакшен
+      // Переносим библиотеки в продакшен в разработке пока что
 
       "./app/css/*.min.css"
     ])
@@ -102,7 +121,7 @@ gulp.task("img", function() {
 // Static Server
 gulp.task("watch", ["browser-sync"], function() {
   //слушаем sass
-  gulp.watch("./app/scss/**/*.scss", ["style"]);
+  gulp.watch("./app/scss/**/*.scss", ["del", "style"]);
 
   //слушаем nunjucks
   gulp
@@ -113,6 +132,6 @@ gulp.task("watch", ["browser-sync"], function() {
     .on("change", browserSync.reload);
 });
 
-gulp.task("default", ["watch"]);
+gulp.task("default", ["del", "style", "watch"]); //я знаю что del тут поидее не нужен, что слишком радикально чистить папки и заново компилировать туда файлы но пока так стоит)
 
-gulp.task("build", ["prebuild", "clear", "img"]);
+gulp.task("build", ["prebuild", "clear", "img"]); //в разработке
