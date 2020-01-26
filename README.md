@@ -1,19 +1,23 @@
-# Gulp Nunjucks Example
+# Gulp Nunjucks
 
-Basic structure for HTML templating with Nunjucks. Including a gulp-sass-workflow, linting and prettier.
+Тестовая сборка
 
-## Basic Setup
+Gulp
+Nunjucks
+Sass
 
-1.  Clone / Download
+## Базовая установка
 
-2.  Install dependencies
+Install dependencies
 
 ```
 $ npm install
 ```
 
-3.  Run on `http://localhost:3000/`
+Запуск
 
 ```
 $ gulp
 ```
+
+## Используется bower
