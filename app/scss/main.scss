@@ -4,14 +4,25 @@
 @import "modules/mainitem"; //блок на главной услуги
 @import "modules/home"; //главный экран
 @import "modules/steps"; //шаги
+@import "modules/footer"; //шаги
+@import "modules/navbar"; //шаги
+@import "modules/card"; //шаги
 
 
 body {
   @include rfs(20px); // есть мысль использовать rfs но пока не разобрался 
+
+  font-family: $base-font-family;
 
   h1 {
     font-family: $font-heading;
     @include rfs(48px);
     letter-spacing: 2px;
   }
+}
+
+svg {
+  fill: white;
+  width: 30px;
+  margin: 0 0 0 16px;
 }

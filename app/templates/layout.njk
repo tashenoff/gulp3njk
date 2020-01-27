@@ -1,31 +1,67 @@
-<!-- layout.njk -->
+<!-- layout_njk -->
+<!--это батя лайаот-->
+<!--я его везде один использую -->
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8">
 
-  <title>Document</title>
-  <link rel="stylesheet" href="css/normalize.min.css">
-  <link rel="stylesheet" href="css/grid.min.css">
-  <link rel="stylesheet" href="css/main.min.css">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- bower:css-->
-  <!-- endbower -->
-</head>
-<body>
-  {% include "partials/home.njk" %}
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="css/normalize.min.css">
+    <link rel="stylesheet" href="css/grid.min.css">
+    <link rel="stylesheet" href="css/main.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
- {% include "partials/mainitem.njk" %}
-  {% include "partials/steps.njk" %}
+    <!-- bower:css-->
+    <!-- endbower -->
 
-  <article class="content">
-    {% block content %}
+  </head>
+
+  <div class="topnav">
+
+    {% for menus in menu | sort(true, true, 'id') %}
+
+      <a href="{{menus.url}}"{% if page_id == menus.id %} class="active"{% endif %}>{{menus.title}}
+      </a>
+
+    {% endfor %}
+
+    <h1>Posts</h1>
+
+  </div>
+
+  <body>
+    {% block home %}
+      <div class="header-banner">
+        <div class="header-content">
+          {% block headercontent %}{% endblock %}
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="row">
+          {% block mainitem %}{% endblock %}
+        </div>
+      </div>
+
     {% endblock %}
-  </article>  
+  </body>
 
-
-  {% include "partials/footer.njk" %}
-  <script src="assets/js/main.js"></script>
-</body>
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-fifty">Лого</div>
+        <div class="col-fifty">
+          <div class="footer-social">
+              Мы в соц сетях
+              {% include "partials/svg/inst.svg" %}
+            {% include "partials/svg/inst.svg" %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script src="js/main.js"></script>
+  <!-- Правила хорошего тона.-->
 </html>

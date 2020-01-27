@@ -1,0 +1,27 @@
+/* Add a black background color to the top navigation */
+.topnav {
+
+    overflow: hidden;
+    max-width: $max-width-container;
+    margin: 0 auto;
+    line-height: 2em;
+
+    a {
+        float: right;
+        color: #000;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        font-size: 17px;
+
+        &:hover {
+            background-color: $secondary;
+            color: white;
+        }
+
+        &.active {
+            background-color: $primary;
+            color: white;
+        }
+    }
+}

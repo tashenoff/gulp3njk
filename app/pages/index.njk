@@ -1,12 +1,13 @@
+{% set title = 'Главная' %}
+{% set page_id = "1" %}
 {% extends "layout.njk" %}
 
-{% block content %}
-<h3>This is the content area.</h3>
-<p>Featuring a loop example...</p>
-<ul class="animals list-bullet">
-  {% for animal in animals %}
-    <li>{{animal.type}} goes {{animal.sound}}</li>
-  {% endfor %}
-</ul>
+{% block headercontent %}
 
+  {% include "partials/header.njk" %}
+
+{% endblock %}
+
+{% block mainitem %}
+  {% include "partials/mainitem.njk" %}
 {% endblock %}

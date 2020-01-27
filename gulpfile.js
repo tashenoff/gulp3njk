@@ -18,7 +18,8 @@ sass.compiler = require("node-sass");
 gulp.task("browser-sync", function() {
   browserSync.init({
     server: {
-      baseDir: "./app"
+      baseDir: "./app",
+      notify: false
     }
   });
 });
@@ -29,7 +30,7 @@ gulp.task("nunjucksRender", function() {
     .src("./app/pages/**/*.+(html|njk)")
     .pipe(
       data(() => {
-        return require("./app/data.json");
+        return require("./app/js/data.json");
       })
     )
     .pipe(
@@ -52,13 +53,13 @@ gulp.task("bower", function() {
     .pipe(gulp.dest("./app"));
 });
 
-gulp.task("min", function() {
-  return gulp
-    .src("./app/css/*.css")
-    .pipe(cssnano())
-    .pipe(rename({ suffix: ".min" })) // Добавляем суффикс .min
-    .pipe(gulp.dest("./app/css"));
-});
+// gulp.task("min", function() {
+//   return gulp
+//     .src("./app/css/*.css")
+//     .pipe(cssnano())
+//     .pipe(rename({ suffix: ".min" })) // Добавляем суффикс .min
+//     .pipe(gulp.dest("./app/css"));
+// });
 
 gulp.task("del", async function() {
   return del.sync("./app/css/*");
