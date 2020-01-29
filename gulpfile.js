@@ -30,7 +30,7 @@ gulp.task("nunjucksRender", function() {
     .src("./app/pages/**/*.+(html|njk)")
     .pipe(
       data(() => {
-        return require("./app/js/data.json");
+        return require("./app/data.json");
       })
     )
     .pipe(
@@ -123,6 +123,8 @@ gulp.task("img", function() {
 gulp.task("watch", ["browser-sync"], function() {
   //слушаем sass
   gulp.watch("./app/scss/**/*.scss", ["del", "style"]);
+  //слушаем js
+  gulp.watch("./app/js/*.js").on("change", browserSync.reload);
 
   //слушаем nunjucks
   gulp

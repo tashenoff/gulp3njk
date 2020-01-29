@@ -1,25 +1,15 @@
-<div class="container">
-  <div class="row">
-    <div class="sideitem">
-      <div class="item">
-        <img src="img/Rectangle_37.png" alt="" srcset=""/>
-      </div>
-      <div class="item">
-        <img src="img/Rectangle 41.png" alt="" srcset=""/>
-      </div>
-    </div>
-    <div class="mainitem">
-      <img src="img/Rectangle 36.png" alt="" srcset=""/>
+{% for mainitems in mainitem %}
+
+  <div class="mainitem-item">
+
+    <div class="mainitem-item__foto">
+      <img src=" {{mainitems.img}}" alt="" srcset=""/>
     </div>
 
-    <div class="sideitem">
-      <div class="item">
-        <img src="img/Rectangle 42.png" alt="" srcset=""/>
-      </div>
-      <div class="item">
-        <img src="img/Rectangle 43.png" alt="" srcset=""/>
-      </div>
+    <div class="mainitem-item__title">
+      {{mainitems.title}}
     </div>
 
   </div>
-</div>
+
+{% endfor %}

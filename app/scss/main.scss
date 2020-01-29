@@ -7,10 +7,12 @@
 @import "modules/footer"; //шаги
 @import "modules/navbar"; //шаги
 @import "modules/card"; //шаги
+@import "modules/about"; //шаги
+@import "modules/marketing"; //шаги
 
 
 body {
-  @include rfs(20px); // есть мысль использовать rfs но пока не разобрался 
+  // @include rfs(20px); // есть мысль использовать rfs но пока не разобрался 
 
   font-family: $base-font-family;
 
@@ -25,4 +27,9 @@ svg {
   fill: white;
   width: 30px;
   margin: 0 0 0 16px;
+}
+
+
+.bg {
+  color: red;
 }

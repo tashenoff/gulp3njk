@@ -3,50 +3,123 @@
   background-repeat: no-repeat;
   background-size: cover;
   padding: 50px;
+
+  h1 {
+    color: #fff;
+    text-align: center;
+  }
 }
 
-.block-steps-number {
-  display: inline-block;
-  background: $secondary;
+.steps-column {
+
+  width: 100%;
+  width: -webkit-calc(25% - 30px);
+  width: -moz-calc(25% - 30px);
+  width: calc(25% - 30px);
+  margin: 15px;
+
+
+}
+
+.item-steps {
+
   color: #fff;
   text-align: center;
-  font-size: $h1-font-size;
-  font-family: $font-heading;
-  border-radius: 50%;
-  border: 11px solid #fff;
-  padding: 30px;
-  width: 50px;
-  height: 50px;
-}
 
-.block-steps-item {
-  display: flex;
-  align-items: center;
+
+
   flex-direction: column;
-  justify-content: center;
-  position: relative;
+
+  &__number {
+    background-color: $secondary;
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 40px;
+    font-family: $font-heading;
+    color: #fff;
+    border: 5px solid white;
+    margin: 0 auto;
+  }
+
+  &__caption {
+    margin-top: 16px;
+    font-weight: bold;
+    margin-bottom: 8px;
+  }
+
+  &__desc {
+    margin-top: 16px;
+  }
+
 }
 
-.block-steps-number::after {
-  content: "";
-  border-radius: 50px;
-  background-color: #fff;
-  top: 25%;
-  height: 20px;
-  width: 20px;
-  left: 100%;
-  bottom: 0;
-  position: absolute;
-}
 
-.block-steps-desc {
-  margin-top: 10px;
-  color: #fff;
-  text-transform: uppercase;
-  text-align: center;
-}
 
-.block-steps-caption {
-  color: #fff;
-  margin-top: 8px;
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// .block-steps-number {
+//   display: inline-block;
+//   background: $secondary;
+//   color: #fff;
+//   text-align: center;
+//   font-size: $h1-font-size;
+//   font-family: $font-heading;
+//   border-radius: 50%;
+//   border: 11px solid #fff;
+//   padding: 30px;
+//   width: 50px;
+//   height: 50px;
+// }
+
+// .block-steps-item {
+//   display: flex;
+//   align-items: center;
+//   flex-direction: column;
+//   justify-content: center;
+//   position: relative;
+// }
+
+// .block-steps-number::after {
+//   content: "";
+//   border-radius: 50px;
+//   background-color: #fff;
+//   top: 25%;
+//   height: 20px;
+//   width: 20px;
+//   left: 100%;
+//   bottom: 0;
+//   position: absolute;
+// }
+
+// .block-steps-desc {
+//   margin-top: 10px;
+//   color: #fff;
+//   text-transform: uppercase;
+//   text-align: center;
+// }
+
+// .block-steps-caption {
+//   color: #fff;
+//   margin-top: 8px;
+// }

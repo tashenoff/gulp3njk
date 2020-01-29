@@ -3,6 +3,7 @@
 .container {
   max-width: $max-width-container;
   margin: 0 auto;
+  border: 1px solid red;
 }
 
 .col-four {
@@ -19,6 +20,7 @@
   width: -moz-calc(33.33% - 30px);
   width: calc(33.33% - 30px);
   margin: 15px;
+
 }
 
 .col-fifty {
@@ -27,12 +29,19 @@
   width: -moz-calc(50% - 30px);
   width: calc(50% - 30px);
   margin: 15px;
+
+  @media screen and (max-width: 600px) {
+    width: 100%;
+    margin: 0;
+
+  }
 }
 
 .row {
   display: flex;
   flex-wrap: wrap;
-  margin: 0 -15px;
+  // margin: 0 -15px;
+  // border: 1px solid red;
 
   @media screen and (max-width: 600px) {
     padding: 1rem;

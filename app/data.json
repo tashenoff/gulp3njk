@@ -22,6 +22,47 @@
     }
   ],
 
+  "mainitem": [
+    {
+      "id": 1,
+      "title": "Водостойкие повязки для принятия душа",
+      "url": "index.html",
+      "img": "img/povyaski/dush.png"
+    },
+    {
+      "id": 2,
+      "title": "Повязки для лечения и профилактики  гипертрофических и келоидных рубцов",
+      "url": "page1.html",
+      "img": "img/povyaski/tatu.png"
+    },
+    {
+      "id": 3,
+      "title": " Повязки для лечения ожогов",
+      "url": "catattlog",
+      "img": "img/povyaski/ojog.png"
+    },
+    {
+      "id": 4,
+      "title": "Повязки для ухода за татуировками",
+      "url": "catahhhhhlog",
+      "img": "img/povyaski/tatu.png"
+    },
+
+    {
+      "id": 5,
+      "title": "Повязки для лечения и профилактики пролежней",
+      "url": "catahhhhhlog",
+      "img": "img/povyaski/prol.png"
+    },
+
+    {
+      "id": 6,
+      "title": "еще какая то повязка",
+      "url": "catahhhhhlog",
+      "img": "img/povyaski/tatu.png"
+    }
+  ],
+
   "card": [
     {
       "id": 5,
@@ -37,7 +78,7 @@
     {
       "id": 6,
       "title": "Второй",
-      "price": "500",
+      "price": "5200",
       "short_desc": "Alldress – самоклеящаяся абсорбирующая повязка, идеальная для широкого спектра слабо или умеренно экссудирующих ран, которая также используется в качестве вторичной повязки.",
       "desc": "Описание",
       "foto": "index.html",
