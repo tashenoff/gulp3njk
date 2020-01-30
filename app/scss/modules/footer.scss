@@ -1,9 +1,44 @@
 footer {
-  background-color: $secondary;
+  background-color: $primary;
+
+  flex: 0 0 auto;
+
+  svg {
+
+    width: 150px;
+    margin: 0 0 0 16px;
+
+
+    @media screen and (max-width: 600px) {
+      width: 150px;
+
+
+    }
+  }
+
+
+
+}
+
+
+.footer-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  width: 100%;
   min-height: 139px;
 }
 
 .footer-social {
   display: flex;
   justify-content: flex-end;
+
+
+  svg {
+    fill: white;
+    width: 30px;
+    margin: 0 0 0 16px;
+  }
+
 }

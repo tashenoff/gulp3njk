@@ -1,7 +1,18 @@
+.marketing {
+    background-color: $primary;
+    color: #fff;
+}
+
 .marketing-container {
     min-height: 300px;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: start;
     flex-direction: column;
+
+
+    &__text {
+        max-width: 600px;
+        margin: 0px 0 30px 0;
+    }
 }

@@ -1,35 +1,48 @@
 @import "./app/bower/rfs/scss";
-@import "modules/settings"; //настройки
-@import "modules/buttons"; //кнопки
-@import "modules/mainitem"; //блок на главной услуги
-@import "modules/home"; //главный экран
-@import "modules/steps"; //шаги
-@import "modules/footer"; //шаги
-@import "modules/navbar"; //шаги
-@import "modules/card"; //шаги
-@import "modules/about"; //шаги
-@import "modules/marketing"; //шаги
+@import "./app/scss/modules/libs.scss";
 
+html,
+body {
+  height: 100%;
+}
 
 body {
   // @include rfs(20px); // есть мысль использовать rfs но пока не разобрался 
-
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  font-size: $base-font-size;
   font-family: $base-font-family;
 
   h1 {
     font-family: $font-heading;
-    @include rfs(48px);
+    // @include rfs(48px);
     letter-spacing: 2px;
-  }
-}
 
-svg {
-  fill: white;
-  width: 30px;
-  margin: 0 0 0 16px;
+  }
+
+  h2 {
+    font-size: $base-font-size*2;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+
+  }
+
+
 }
 
 
 .bg {
   color: red;
+}
+
+.wrappers {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+
+
+.main {
+  flex: 1 0 auto;
 }

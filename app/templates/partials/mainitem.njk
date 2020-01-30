@@ -1,15 +1,18 @@
 {% for mainitems in mainitem %}
 
   <div class="mainitem-item">
+    <a href="/landing.html" id="">
+      <div class="mainitem-item__body">
 
-    <div class="mainitem-item__foto">
-      <img src=" {{mainitems.img}}" alt="" srcset=""/>
-    </div>
+        <div class="mainitem-item__foto">
+          <img src=" {{mainitems.img}}" alt="" srcset=""/>
+        </div>
 
-    <div class="mainitem-item__title">
-      {{mainitems.title}}
-    </div>
-
+        <div class="mainitem-item__title">
+          {{mainitems.title}}
+        </div>
+      </div>
+    </a>
   </div>
 
 {% endfor %}

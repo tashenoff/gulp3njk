@@ -5,28 +5,40 @@
 {% extends "layout.njk" %}
 
 {% block home %}
-    <h3>Это блок для второй страницыssы</h3>ты тут да?
-</p>
-<ul class="animals list-bullet"></ul>
 
-{% for menus in menu | sort(true, true, 'id') %}
+    <div class="body-catalog">
 
-    <a href="{{menus.url}}"{% if page_id == menus.id %} class="active"{% endif %}>{{menus.title}}
-    </a>
-
-{% endfor %}
-<div class="container">
-    <div class="row">
-        {% for cards in card | sort(true, true, 'id') %}
-            <div class="col-three">
-                <img src="{{cards.foto}}">
-                {{cards.title}}
-                {{cards.short_desc}}
-                <a href="card.html?cardId={{cards.id}}">подробнее</a>
+        <section class="marketing">
+            <div class="container">
+                <div class="row">
+                    {% block marketing %}
+                        {% include "partials/marketing.njk" %}
+                    {% endblock %}
+                </div>
             </div>
+        </section>
 
-        {% endfor %}
+        <div class="container">
+
+            <h2>ПОВЯЗКИ И ПЛАСТЫРИ MOLNLYCKE</h2>
+            <div class="row">
+
+                {% for cards in card | sort(true, true, 'id') %}
+
+                    <div class="product-item">
+                        <div class="product-item__body">
+                            <div class="product-item__title">
+                                {{cards.title}}</div>
+                            <div class="product-item__image">
+                                <img src="{{cards.foto}}"></div>
+                            <div class="product-item__action">
+                                <a class="button-primary" href="card.html?cardId={{cards.id}}">подробнее</a>
+                            </div>
+                        </div>
+                    </div>
+
+                {% endfor %}
+            </div>
+        </div>
     </div>
-</div>
-
 {% endblock %}

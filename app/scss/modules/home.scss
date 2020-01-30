@@ -9,6 +9,7 @@
 
     ul {
       margin: 2em 0;
+      
     }
   }
 
@@ -22,13 +23,15 @@
     justify-content: center;
     height: 100%;
     color: #fff;
+    
 
     @media screen and (max-width: 600px) {
       padding: 1rem;
 
       ul {
-        margin: 0em 0;
-      }
+   margin: 0em 0;
+   line-height: $base-font-size*1.5;
+ }
     }
   }
 
